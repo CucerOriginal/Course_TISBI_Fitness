@@ -31,7 +31,7 @@ namespace Course_TISBI_Fitness.MainOffice
 
             var trainers = dbContext.Trainer.ToArray();
             TraineListdataGridView.DataSource = trainers;
-            TraineListdataGridView.Columns.RemoveAt(0);
+            TraineListdataGridView.Columns[0].Visible = false;
         }
 
 
@@ -48,7 +48,7 @@ namespace Course_TISBI_Fitness.MainOffice
             var searchResult = dbContext.Trainer.Where(p => p.SecondName.Contains(SearchtextBox.Text) || p.Name.Contains(SearchtextBox.Text) || p.MiddleName.Contains(SearchtextBox.Text) ||
             p.PhoneNumber.Contains(SearchtextBox.Text)).ToArray();
             TraineListdataGridView.DataSource = searchResult;
-            TraineListdataGridView.Columns.RemoveAt(0);
+            TraineListdataGridView.Columns[0].Visible = false;
         }
 
         private void VisitShowbutton_Click(object sender, EventArgs e)
@@ -62,14 +62,14 @@ namespace Course_TISBI_Fitness.MainOffice
         {
             var trainers = dbContext.Trainer.ToArray();
             TraineListdataGridView.DataSource = trainers;
-            TraineListdataGridView.Columns.RemoveAt(0);
+            TraineListdataGridView.Columns[0].Visible = false;
         }
 
         private void TraineListdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                selectedTrainerId = (int)TraineListdataGridView.Rows[e.RowIndex].Cells[0].RowIndex+1;
+                selectedTrainerId = (int)TraineListdataGridView.Rows[e.RowIndex].Cells[0].Value;
             }
             catch
             {

@@ -34,7 +34,7 @@ namespace Course_TISBI_Fitness.MainOffice
             dbContext = new ApplicationDbContext(connectionString);
 
             AllClietnsListdataGridView.DataSource = Clients();
-            AllClietnsListdataGridView.Columns.RemoveAt(0);
+            AllClietnsListdataGridView.Columns[0].Visible = false;
         }
 
         private void Searchbutton_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace Course_TISBI_Fitness.MainOffice
 
             AllClietnsListdataGridView.DataSource = Clients().Where(p => p.SecondName.Contains(SearchtextBox.Text) || p.Address.Contains(SearchtextBox.Text) || p.PhoneNumber.Contains(SearchtextBox.Text)
             || p.Name.Contains(SearchtextBox.Text) || p.MiddleName.Contains(SearchtextBox.Text)).ToArray();
-            AllClietnsListdataGridView.Columns.RemoveAt(0);
+            AllClietnsListdataGridView.Columns[0].Visible = false;
         }
 
         private IList<Client> Clients()
@@ -60,7 +60,7 @@ namespace Course_TISBI_Fitness.MainOffice
         private void Refreshbutton_Click(object sender, EventArgs e)
         {
             AllClietnsListdataGridView.DataSource = Clients();
-            AllClietnsListdataGridView.Columns.RemoveAt(0);
+            AllClietnsListdataGridView.Columns[0].Visible = false;
         }
     }
 }

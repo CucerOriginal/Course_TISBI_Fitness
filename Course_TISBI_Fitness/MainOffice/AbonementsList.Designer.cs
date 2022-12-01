@@ -48,6 +48,7 @@
             this.TrainerTimeShowbutton = new System.Windows.Forms.Button();
             this.CreateTrainerVisit = new System.Windows.Forms.Button();
             this.AllClientsListbutton = new System.Windows.Forms.Button();
+            this.updateAdonementButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ClientsdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -221,7 +222,7 @@
             // 
             // CreateTrainerVisit
             // 
-            this.CreateTrainerVisit.Location = new System.Drawing.Point(767, 489);
+            this.CreateTrainerVisit.Location = new System.Drawing.Point(767, 515);
             this.CreateTrainerVisit.Name = "CreateTrainerVisit";
             this.CreateTrainerVisit.Size = new System.Drawing.Size(210, 29);
             this.CreateTrainerVisit.TabIndex = 11;
@@ -239,11 +240,22 @@
             this.AllClientsListbutton.UseVisualStyleBackColor = true;
             this.AllClientsListbutton.Click += new System.EventHandler(this.AllClientsListbutton_Click);
             // 
+            // updateAdonementButton
+            // 
+            this.updateAdonementButton.Location = new System.Drawing.Point(767, 465);
+            this.updateAdonementButton.Name = "updateAdonementButton";
+            this.updateAdonementButton.Size = new System.Drawing.Size(210, 29);
+            this.updateAdonementButton.TabIndex = 13;
+            this.updateAdonementButton.Text = "Продлить абонемент";
+            this.updateAdonementButton.UseVisualStyleBackColor = true;
+            this.updateAdonementButton.Click += new System.EventHandler(this.updateAdonementButton_Click);
+            // 
             // AbonementsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1021, 578);
+            this.Controls.Add(this.updateAdonementButton);
             this.Controls.Add(this.AllClientsListbutton);
             this.Controls.Add(this.CreateTrainerVisit);
             this.Controls.Add(this.TrainerTimeShowbutton);
@@ -285,5 +297,6 @@
         private DataGridViewTextBoxColumn StartAbonement;
         private DataGridViewTextBoxColumn EndAbonement;
         private Button AllClientsListbutton;
+        private Button updateAdonementButton;
     }
 }

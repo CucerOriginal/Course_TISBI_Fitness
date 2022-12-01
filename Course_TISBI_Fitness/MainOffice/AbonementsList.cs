@@ -32,7 +32,7 @@ namespace Course_TISBI_Fitness.MainOffice
 
             var clients = dbContext.Client.ToList();
             ClientsdataGridView.DataSource = clients;
-            ClientsdataGridView.Columns.RemoveAt(0);
+            ClientsdataGridView.Columns[0].Visible = false;
 
             if (connectionString == "Host=localhost;Port=5432;Database=Fitness;Username=postgres;Password=q1w2e3")
             {
@@ -59,14 +59,14 @@ namespace Course_TISBI_Fitness.MainOffice
             var searchResult = dbContext.Client.Where(p => p.SecondName.Contains(SearchtextBox.Text) || p.Address.Contains(SearchtextBox.Text) || p.PhoneNumber.Contains(SearchtextBox.Text)
             || p.Name.Contains(SearchtextBox.Text) || p.MiddleName.Contains(SearchtextBox.Text));
             ClientsdataGridView.DataSource = searchResult.ToArray();
-            ClientsdataGridView.Columns.RemoveAt(0);
+            ClientsdataGridView.Columns[0].Visible = false;
         }
 
         private void UpdateDatabutton_Click(object sender, EventArgs e)
         {
             var updateData = dbContext.Client.ToArray();
             ClientsdataGridView.DataSource = updateData;
-            ClientsdataGridView.Columns.RemoveAt(0);
+            ClientsdataGridView.Columns[0].Visible = false;
         }
 
         private void VisitsShowbutton_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Course_TISBI_Fitness.MainOffice
         {
             try
             {
-                selectedClientId = (int)ClientsdataGridView.Rows[e.RowIndex].Cells[0].RowIndex + 1;
+                selectedClientId = (int)ClientsdataGridView.Rows[e.RowIndex].Cells[0].Value;
             }
             catch 
             {
@@ -103,6 +103,11 @@ namespace Course_TISBI_Fitness.MainOffice
         {
             AllClientsListForm allClientsListForm = new AllClientsListForm(connectionString);
             allClientsListForm.ShowDialog();
+        }
+
+        private void updateAdonementButton_Click(object sender, EventArgs e)
+        {
+            var visitWithTrainer = dbContext.Client.Where(p => p.Id == selectedClientId);
         }
     }
 }
