@@ -19,6 +19,7 @@ namespace Course_TISBI_Fitness.MainOffice
         string connectionString;
 
         int selectedClientId;
+        int selectedRow;
 
         public AbonementsList(string connection)
         {
@@ -80,6 +81,7 @@ namespace Course_TISBI_Fitness.MainOffice
             try
             {
                 selectedClientId = (int)ClientsdataGridView.Rows[e.RowIndex].Cells[0].Value;
+                selectedRow = (int)ClientsdataGridView.Rows[e.RowIndex].Cells[0].RowIndex;
             }
             catch 
             {
@@ -107,7 +109,21 @@ namespace Course_TISBI_Fitness.MainOffice
 
         private void updateAdonementButton_Click(object sender, EventArgs e)
         {
-            var visitWithTrainer = dbContext.Client.Where(p => p.Id == selectedClientId);
+            DateTime dateTimeNow = DateTime.UtcNow;
+            DateOnly dateNow = new DateOnly(dateTimeNow.Year, dateTimeNow.Month, dateTimeNow.Day);
+            DateOnly dateAbonEnd = (DateOnly)ClientsdataGridView.Rows[selectedRow].Cells[8].Value;
+            if (dateAbonEnd.AddDays(14) <= dateNow)
+            {
+                if(selectedClientId != 0)
+                {
+                    ExtendAbonement extendAbonement = new ExtendAbonement(selectedClientId, connectionString, dateNow);
+                    extendAbonement.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Абонемент еще актуален");
+            }
         }
     }
 }
