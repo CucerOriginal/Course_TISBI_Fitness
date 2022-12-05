@@ -25,7 +25,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void TrainerList_Load(object sender, EventArgs e)
+        private void TrainerList_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             dbContext = new ApplicationDbContext(connectionString);
 
@@ -43,7 +43,7 @@ namespace Course_TISBI_Fitness.MainOffice
             this.dbContext = null;
         }
 
-        private void Searchbutton_Click(object sender, EventArgs e)
+        private void Searchbutton_Click(object sender, EventArgs e)//Данный метод необходим для поиска тренеров
         {
             var searchResult = dbContext.Trainer.Where(p => p.SecondName.Contains(SearchtextBox.Text) || p.Name.Contains(SearchtextBox.Text) || p.MiddleName.Contains(SearchtextBox.Text) ||
             p.PhoneNumber.Contains(SearchtextBox.Text)).ToArray();
@@ -51,14 +51,14 @@ namespace Course_TISBI_Fitness.MainOffice
             TraineListdataGridView.Columns[0].Visible = false;
         }
 
-        private void VisitShowbutton_Click(object sender, EventArgs e)
+        private void VisitShowbutton_Click(object sender, EventArgs e)//Данный метод необходим для отображения записи занятий
         {
             var visits = dbContext.TrainerVisitRegistrations.Where(p => p.TrainerId == selectedTrainerId).Join(dbContext.Trainer, a => a.TrainerId, b => b.Id, (a,b)
                 => new {Start = a.VisitStart, End = a.VisitEnd }).ToArray();
             TraineListdataGridView.DataSource = visits;
         }
 
-        private void Refreshbutton_Click(object sender, EventArgs e)
+        private void Refreshbutton_Click(object sender, EventArgs e)//Данный метод необходим для обновления таблицы тренеров
         {
             var trainers = dbContext.Trainer.ToArray();
             TraineListdataGridView.DataSource = trainers;

@@ -29,7 +29,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void AllClientsListForm_Load(object sender, EventArgs e)
+        private void AllClientsListForm_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             dbContext = new ApplicationDbContext(connectionString);
 
@@ -37,7 +37,7 @@ namespace Course_TISBI_Fitness.MainOffice
             AllClietnsListdataGridView.Columns[0].Visible = false;
         }
 
-        private void Searchbutton_Click(object sender, EventArgs e)
+        private void Searchbutton_Click(object sender, EventArgs e)//Данный метод необходим для поиска данных
         {
             dbContext = new ApplicationDbContext(connectionString);
 
@@ -46,7 +46,7 @@ namespace Course_TISBI_Fitness.MainOffice
             AllClietnsListdataGridView.Columns[0].Visible = false;
         }
 
-        private IList<Client> Clients()
+        private IList<Client> Clients()//Данный метод необходим для выгрузки всех клиентов в массив
         {
             var clients = dbContext.Client.ToList();
 
@@ -57,7 +57,7 @@ namespace Course_TISBI_Fitness.MainOffice
             return clients;
         }
 
-        private void Refreshbutton_Click(object sender, EventArgs e)
+        private void Refreshbutton_Click(object sender, EventArgs e)//Данный метод необходим для обновления таблицы
         {
             AllClietnsListdataGridView.DataSource = Clients();
             AllClietnsListdataGridView.Columns[0].Visible = false;

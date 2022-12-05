@@ -25,7 +25,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void ClientCreate_Click(object sender, EventArgs e)
+        private void ClientCreate_Click(object sender, EventArgs e)//Данный метод необходим для создания клиента
         {
             DateOnly dateNow = DateOnly.FromDateTime(DateTime.UtcNow);
             DateOnly dateCalculat = dateNow;
@@ -56,7 +56,7 @@ namespace Course_TISBI_Fitness.MainOffice
 
         }
 
-        private void CreateClient_Load(object sender, EventArgs e)
+        private void CreateClient_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             dbContext = new ApplicationDbContext(connectionString);
 

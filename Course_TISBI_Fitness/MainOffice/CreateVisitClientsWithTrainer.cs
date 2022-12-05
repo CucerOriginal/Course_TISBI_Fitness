@@ -28,7 +28,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void CreateVisit_Click(object sender, EventArgs e)
+        private void CreateVisit_Click(object sender, EventArgs e)//Данный метод необходим для бронирования занятия с тренером 
         {
             var dateSelected = TrainermonthCalendar.SelectionStart;
             try
@@ -64,7 +64,7 @@ namespace Course_TISBI_Fitness.MainOffice
             TrainerTimedataGridView.DataSource = trainer.ToArray();
         }
 
-        private void CreateVisitClientsWithTrainer_Load(object sender, EventArgs e)
+        private void CreateVisitClientsWithTrainer_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             var clietns = dbContext.Client.ToArray();
             for(int i = 0; i < clietns.Length; i++)
@@ -81,7 +81,7 @@ namespace Course_TISBI_Fitness.MainOffice
             ClientsComboBox.SelectedIndex = abonementId - 1;
         }
 
-        private void TrainercomboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void TrainercomboBox_SelectedIndexChanged(object sender, EventArgs e)//Данный метод необходим для отображения занятий выбранного тренера  
         {
             var dateSelected = TrainermonthCalendar.SelectionStart;
 
@@ -91,7 +91,7 @@ namespace Course_TISBI_Fitness.MainOffice
             TrainerTimedataGridView.DataSource = trainer.ToArray();
         }
 
-        private void TrainermonthCalendar_DateChanged(object sender, DateRangeEventArgs e)
+        private void TrainermonthCalendar_DateChanged(object sender, DateRangeEventArgs e)//Данный метод необходим для отображения занятий выбранного тренера 
         {
             try
             {

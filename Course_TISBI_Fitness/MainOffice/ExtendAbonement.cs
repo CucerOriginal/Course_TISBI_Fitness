@@ -26,7 +26,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void ExtendAbonement_Load(object sender, EventArgs e)
+        private void ExtendAbonement_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             dbContext = new ApplicationDbContext(connectionString);
 
@@ -41,7 +41,7 @@ namespace Course_TISBI_Fitness.MainOffice
             }
         }
 
-        private void ExtendAbonbutton_Click(object sender, EventArgs e)
+        private void ExtendAbonbutton_Click(object sender, EventArgs e)//Данный метод необходим для продления абонемента 
         {
             DateOnly dateCalculat = abonEnd;
             if (TariffcomboBox.SelectedIndex == 0 || TariffcomboBox.SelectedIndex == 1)

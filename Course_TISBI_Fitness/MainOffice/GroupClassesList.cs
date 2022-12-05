@@ -23,7 +23,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void GroupClassesList_Load(object sender, EventArgs e)
+        private void GroupClassesList_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             dbContext = new ApplicationDbContext(connectionString); 
 
@@ -33,7 +33,7 @@ namespace Course_TISBI_Fitness.MainOffice
             GroupClassesdataGridView.DataSource = groupClases;
         }
 
-        private void Refreshbutton_Click(object sender, EventArgs e)
+        private void Refreshbutton_Click(object sender, EventArgs e)//Данный метод необходим для обновления данных в таблице
         {
             var groupClases = dbContext.GroupClasses.Join(dbContext.GroupClassesTimes, a => a.Id, b => b.GroupClassesId, (a, b) => new {
                 Название = a.Name,
@@ -44,7 +44,7 @@ namespace Course_TISBI_Fitness.MainOffice
             GroupClassesdataGridView.DataSource = groupClases;
         }
 
-        private void Searchbutton_Click(object sender, EventArgs e)
+        private void Searchbutton_Click(object sender, EventArgs e)//Данный метод необходим для поиска
         {
             int dayOfWeek = 0;
             if (SearchtextBox.Text.Contains("Пон")) { dayOfWeek = 1; };

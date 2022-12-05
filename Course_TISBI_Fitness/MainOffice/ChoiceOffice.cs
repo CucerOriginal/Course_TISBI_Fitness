@@ -17,19 +17,19 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void MainOfficebutton_Click(object sender, EventArgs e)
+        private void MainOfficebutton_Click(object sender, EventArgs e)//Данный метод необходим для перехода на форму главного офиса
         {
             MainOfficeForm mainOfficeForm = new MainOfficeForm("Host=localhost;Port=5432;Database=Fitness;Username=postgres;Password=q1w2e3");
             mainOfficeForm.ShowDialog();
         }
 
-        private void FilialOnebutton_Click(object sender, EventArgs e)
+        private void FilialOnebutton_Click(object sender, EventArgs e)//Данный метод необходим для перехода на форму первого филиала
         {
             MainOfficeForm mainOfficeForm = new MainOfficeForm("Host=localhost;Port=5432;Database=FitnessFilialOne;Username=postgres;Password=q1w2e3");
             mainOfficeForm.ShowDialog();
         }
 
-        private void FilialTwobutton_Click(object sender, EventArgs e)
+        private void FilialTwobutton_Click(object sender, EventArgs e)//Данный метод необходим для перехода на форму второго филиала
         {
             MainOfficeForm mainOfficeForm = new MainOfficeForm("Host=localhost;Port=5432;Database=FitnessFilialTwo;Username=postgres;Password=q1w2e3");
             mainOfficeForm.ShowDialog();

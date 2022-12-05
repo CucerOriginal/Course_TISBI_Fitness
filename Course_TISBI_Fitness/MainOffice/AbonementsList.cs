@@ -27,7 +27,7 @@ namespace Course_TISBI_Fitness.MainOffice
             InitializeComponent();
         }
 
-        private void AbonementsList_Load(object sender, EventArgs e)
+        private void AbonementsList_Load(object sender, EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             dbContext = new ApplicationDbContext(connectionString);
 
@@ -50,12 +50,12 @@ namespace Course_TISBI_Fitness.MainOffice
             this.dbContext = null;
         }
 
-        private void Change_Click(object sender, EventArgs e)
+        private void Change_Click(object sender, EventArgs e)//Данный метод необходим для сохранений измененных данных
         {
             dbContext.SaveChanges();
         }
 
-        private void Searchbutton_Click(object sender, EventArgs e)
+        private void Searchbutton_Click(object sender, EventArgs e)//Данный метод необходим для поиска данных
         {
             var searchResult = dbContext.Client.Where(p => p.SecondName.Contains(SearchtextBox.Text) || p.Address.Contains(SearchtextBox.Text) || p.PhoneNumber.Contains(SearchtextBox.Text)
             || p.Name.Contains(SearchtextBox.Text) || p.MiddleName.Contains(SearchtextBox.Text));
@@ -63,20 +63,20 @@ namespace Course_TISBI_Fitness.MainOffice
             ClientsdataGridView.Columns[0].Visible = false;
         }
 
-        private void UpdateDatabutton_Click(object sender, EventArgs e)
+        private void UpdateDatabutton_Click(object sender, EventArgs e)//Данный метод необходим для обновления таблицы
         {
             var updateData = dbContext.Client.ToArray();
             ClientsdataGridView.DataSource = updateData;
             ClientsdataGridView.Columns[0].Visible = false;
         }
 
-        private void VisitsShowbutton_Click(object sender, EventArgs e)
+        private void VisitsShowbutton_Click(object sender, EventArgs e)//Данный метод необходим для отображения посещений
         {
             var visits = dbContext.VisitRegistrations.Where(p=> p.AbonementId == selectedClientId).Join(dbContext.Visit, p=> p.VisitId, a=> a.Id, (p,a) => new {Start = a.VisitStart, End = a.VisitEnd});
             ClientsdataGridView.DataSource = visits.ToArray();
         }
 
-        private void ClientsdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void ClientsdataGridView_CellClick(object sender, DataGridViewCellEventArgs e)//Данный метод необходим для определения выборного пользователь 
         {
             try
             {
@@ -89,25 +89,25 @@ namespace Course_TISBI_Fitness.MainOffice
             }
         }
 
-        private void TrainerTimeShowbutton_Click(object sender, EventArgs e)
+        private void TrainerTimeShowbutton_Click(object sender, EventArgs e)//Данный метод необходим для отображения тренировок с тренером
         {
             var visitWithTrainer = dbContext.TrainerVisitRegistrations.Where(p => p.AbonementId == selectedClientId).Join(dbContext.Trainer, p=> p.TrainerId, a=> a.Id, (p,a) => new {a.SecondName, a.Name, a.MiddleName, a.Cost, a.PhoneNumber, p.VisitStart, p.VisitEnd});
             ClientsdataGridView.DataSource = visitWithTrainer.ToArray();
         }
 
-        private void CreateTrainerVisit_Click(object sender, EventArgs e)
+        private void CreateTrainerVisit_Click(object sender, EventArgs e)//Данный метод необходим для перехода на форму бронирования занятия с тренером 
         {
             CreateVisitClientsWithTrainer createVisitClientsWithTrainer = new CreateVisitClientsWithTrainer(selectedClientId, connectionString);
             createVisitClientsWithTrainer.ShowDialog();
         }
 
-        private void AllClientsListbutton_Click(object sender, EventArgs e)
+        private void AllClientsListbutton_Click(object sender, EventArgs e)//Данный метод необходим для отображения всех клиентов 
         {
             AllClientsListForm allClientsListForm = new AllClientsListForm(connectionString);
             allClientsListForm.ShowDialog();
         }
 
-        private void updateAdonementButton_Click(object sender, EventArgs e)
+        private void updateAdonementButton_Click(object sender, EventArgs e)//Данный метод необходим для перехода на форму продления абонемента
         {
             DateTime dateTimeNow = DateTime.UtcNow;
             DateOnly dateNow = new DateOnly(dateTimeNow.Year, dateTimeNow.Month, dateTimeNow.Day);

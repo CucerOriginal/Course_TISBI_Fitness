@@ -25,7 +25,7 @@ namespace Course_TISBI_Fitness.MainOffice
 
         }
 
-        protected override void OnLoad(EventArgs e)
+        protected override void OnLoad(EventArgs e)//Данный метод необходим для загрузки данных при открытии формы
         {
             base.OnLoad(e);
 
@@ -45,13 +45,13 @@ namespace Course_TISBI_Fitness.MainOffice
             
         }
 
-        private void CreateAbonement_Click(object sender, EventArgs e)
+        private void CreateAbonement_Click(object sender, EventArgs e)//Данный метод необходим для открытия формы создание клиента  
         {
             CreateClient createClient = new CreateClient(connectionString);
             createClient.ShowDialog();
         }
 
-        private void AbonementList_Click(object sender, EventArgs e)
+        private void AbonementList_Click(object sender, EventArgs e)//Данный метод необходим для открытия формы список абонементов
         {
             AbonementsList abonementsList = new AbonementsList(connectionString);
             abonementsList.ShowDialog();
@@ -65,7 +65,7 @@ namespace Course_TISBI_Fitness.MainOffice
             this.dbContext = null;
         }
 
-        private void TrainerListbutton_Click(object sender, EventArgs e)
+        private void TrainerListbutton_Click(object sender, EventArgs e)//Данный метод необходим для открытия формы списка тренеров
         {
             TrainerList trainerList = new TrainerList(connectionString);
             trainerList.ShowDialog();
@@ -76,7 +76,7 @@ namespace Course_TISBI_Fitness.MainOffice
 
         }
 
-        private void GroupClassesListbutton_Click(object sender, EventArgs e)
+        private void GroupClassesListbutton_Click(object sender, EventArgs e)//Данный метод необходим для открытия формы групповых занятий
         {
             GroupClassesList groupClassesList = new GroupClassesList(connectionString);
             groupClassesList.ShowDialog();
