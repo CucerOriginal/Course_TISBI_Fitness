@@ -10,6 +10,11 @@ namespace Course_TISBI_Fitness.DbContextData
 {
     public class ApplicationDbContextFilialTwo : DbContext
     {
+        public ApplicationDbContextFilialTwo()
+        {
+            Database.EnsureCreated();
+        }
+
         public DbSet<Tariff>? Tariff { get; set; }
 
         public DbSet<Abonement>? Abonement { get; set; }
